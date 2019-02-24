@@ -16,13 +16,14 @@ Route::get('/', function () {
 });
 
 
-Route::group(['middleware'=>['auth']], function(){
-   Route::prefix('admin')->group(function(){
-		Route::get('/', function(){
-	       return view('admin.pages.dashboard');
-		})->name('admin.home');
+Route::group(['prefix'=>'admin','middleware'=>['auth']], function(){
+   
+	Route::get('/', function(){
+       return view('admin.pages.dashboard');
+	})->name('admin.home');
 
-		Route::prefix('user')->group(function(){
+    /* User */
+	Route::prefix('user')->group(function(){
 
 		   Route::get('/','UserController@daftar')->name('admin.user')->middleware('akses.admin');
 		   Route::delete('/','UserController@delete')->middleware('akses.admin');
@@ -37,8 +38,14 @@ Route::group(['middleware'=>['auth']], function(){
 		   
            Route::get('/setting','UserSettingController@form')->name('admin.user.setting');
            Route::post('/setting','UserSettingController@update');
-		});
-	});
+	});  
+  
+    /* Kategori */
+
+    Route::group(['prefix'=>'kategori','middleware'=>'akses.admin'], function(){
+    	Route::get('/','KategoriController@daftar')->name('admin.kategori');
+    });
+
 });
 
 
