@@ -1,5 +1,5 @@
 @extends('admin.main')
-@section('title','kategori')
+@section('title','Kategori')
 @section('content')
 <h1>Kategori</h1>
 <hr>
@@ -40,7 +40,8 @@
 	 <tr>
 	 	<td>{{ $dt->nama_kategori }}</td>
 	 	<td>
-	 		 <a href="#" class="btn btn-success btn-sm">
+	 		 <a href="{{route('admin.kategori.edit',['id'=>$dt->id])}}" 
+	 		 class="btn btn-success btn-sm">
 	 		 	<i class="fa fa-w fa-edit"></i>
 	 		 </a>
 	 		 <button type="button" class="btn btn-danger btn-sm">
