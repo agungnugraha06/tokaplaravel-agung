@@ -3,9 +3,19 @@
 @section('content')
 <h1>Kategori</h1>
 <hr>
+
 @if( session('result') == 'success')
 <div class="alert alert-success alert-dismissible fade show">
 	<strong>Saved !</strong> Berhasil Disimpan.
+	<button type="button" class="close" data-dismiss="alert">
+		 &times;
+	</button>
+</div>
+@endif
+
+@if( session('result') == 'update')
+<div class="alert alert-success alert-dismissible fade show">
+	<strong>Updated !</strong> Berhasil Diupdate.
 	<button type="button" class="close" data-dismiss="alert">
 		 &times;
 	</button>
